@@ -84,7 +84,7 @@ class AutoScalingGroups(object):
                     for tag in raw_group['Tags']:
                         if tag['Key'] == self._CLUSTER_KEY:
                             cluster_name = tag['Value']
-                        elif tag['Key'] in self._ROLE_KEYS:
+                        elif role is None and tag['Key'] in self._ROLE_KEYS:
                             role = tag['Value']
                     if cluster_name != self.cluster_name or role not in self._WORKER_ROLE_VALUES:
                         continue
